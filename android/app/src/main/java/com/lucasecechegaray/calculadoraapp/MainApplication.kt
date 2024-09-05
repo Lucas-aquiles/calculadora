@@ -1,4 +1,4 @@
-package com.awesomeproject
+package com.lucasechegaray.calculadoraapp
 
 import android.app.Application
 import com.facebook.react.PackageList

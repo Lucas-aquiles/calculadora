@@ -9,7 +9,7 @@ enum Operator {
 
 const useCalculatorButton = () => {
   const [formula, setFormula] = useState('');
-  const [reset,setReset]=useState(false)
+  const [reset, setReset] = useState(false);
   const [dataSaveA, setDataSaveA] = useState('0');
   const [dataSaveB, setDataSaveB] = useState('0');
   const [dataSaveC, setDataSaveC] = useState('0');
@@ -28,7 +28,7 @@ const useCalculatorButton = () => {
     }
   }, [number]);
   useEffect(() => {
-    setFormula('0')
+    setFormula('0');
   }, [reset]);
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const useCalculatorButton = () => {
     }
     setPrevNumber('0');
     lastOperation.current = undefined;
-    setReset(!reset)
+    setReset(!reset);
   };
   const saveDataA = () => {
     if (

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Pressable, Text, Alert} from 'react-native';
+import {Pressable, Text, Vibration} from 'react-native';
 import {colors, styles} from '../../config/theme/app-theme';
 
 interface Props {
@@ -21,10 +21,15 @@ const SaveResult = ({
   useDataSave,
   resultSave,
 }: Props) => {
+  const handleLongPress = () => {
+    Vibration.vibrate([50, 400, 1000]); 
+    if (onPress) {
+      onPress(); 
+    }  };
   return (
     <Pressable
       onPress={useDataSave}
-      onLongPress={onPress}
+      onLongPress={handleLongPress}
       style={({pressed}) => ({
         ...styles.buttonAux,
         backgroundColor: color,

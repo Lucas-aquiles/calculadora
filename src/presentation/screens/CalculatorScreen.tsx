@@ -2,15 +2,29 @@ import {Pressable, Text, View} from 'react-native';
 import {colors, styles} from '../../config/theme/app-theme';
 import CalculatorBottom from '../components/CalculatorBottom';
 import useCalculatorButton from '../hooks/useCalculatorButton';
+import SaveResult from '../components/SaveResults';
 
 const CalculatorScreen = () => {
   const {
     formula,
     number,
     prevNumber,
+    dataSaveA,
+    dataSaveB,
+    dataSaveC,
+    dataSaveD,
+
     buildNumber,
     toggleSign,
     clean,
+    saveDataA,
+    useDataA,
+    useDataB,
+    useDataC,
+    useDataD,
+    saveDataB,
+    saveDataC,
+    saveDataD,
     deleteOperation,
     divideOperation,
     multiplyOperation,
@@ -21,9 +35,21 @@ const CalculatorScreen = () => {
 
   return (
     <View style={styles.calculatorContainer}>
+      <View style={{position:"absolute", width: 'auto', top:0, right:0,left:0,
+          height: 200 }}> 
+      <Text style={{color:colors.lightGray, marginHorizontal: 'auto',marginVertical:"auto", fontSize:18}}>Guarda tus resultados</Text>
+      <View style={{ display:"flex",flexDirection:"row", marginHorizontal:"auto",marginVertical:"auto"}}>  
+      <SaveResult   onPress={saveDataA}  useDataSave={useDataA}  resultSave={dataSaveA} label="A"/>
+      <SaveResult   onPress={saveDataB}   useDataSave={useDataB}   resultSave={dataSaveB} label="B"/>
+      <SaveResult   onPress={saveDataC}  useDataSave={useDataC}   resultSave={dataSaveC} label="C"/>
+      <SaveResult   onPress={saveDataD}   useDataSave={useDataD}   resultSave={dataSaveD} label="D"/>
+      </View>
+      </View>
+
+
       <View style={{paddingHorizontal: 30, paddingBottom: 20}}>
         <Text adjustsFontSizeToFit numberOfLines={1} style={styles.mainResult}>
-          {formula}
+          {formula} 
         </Text>
         {
           (formula === prevNumber )

@@ -53,6 +53,15 @@ export const styles = StyleSheet.create({
     marginHorizontal:10,
 
   },
+  buttonAux:{
+    height:60,
+    backgroundColor:"colors.darkGray",
+    borderRadius:100,
+    justifyContent:"center",
+    marginHorizontal:10,
+
+  },
+
   buttonText:{
     textAlign:"center",
     padding:10,

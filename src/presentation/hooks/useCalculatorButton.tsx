@@ -9,7 +9,11 @@ enum Operator {
 
 const useCalculatorButton = () => {
   const [formula, setFormula] = useState('');
-
+  const [reset,setReset]=useState(false)
+  const [dataSaveA, setDataSaveA] = useState('0');
+  const [dataSaveB, setDataSaveB] = useState('0');
+  const [dataSaveC, setDataSaveC] = useState('0');
+  const [dataSaveD, setDataSaveD] = useState('0');
   const [number, setNumber] = useState('0');
   const [prevNumber, setPrevNumber] = useState('0');
 
@@ -23,14 +27,14 @@ const useCalculatorButton = () => {
       setFormula(number);
     }
   }, [number]);
+  useEffect(() => {
+    setFormula('0')
+  }, [reset]);
 
   useEffect(() => {
     const subResult = calculateSubResult();
-    setPrevNumber(`${subResult}`)
-  
-   
-  }, [formula])
-  
+    setPrevNumber(`${subResult}`);
+  }, [formula]);
 
   const clean = () => {
     if (number !== '0') {
@@ -38,10 +42,66 @@ const useCalculatorButton = () => {
       lastOperation.current = undefined;
       setFormula('');
       setPrevNumber('0');
-
     }
     setPrevNumber('0');
     lastOperation.current = undefined;
+    setReset(!reset)
+  };
+  const saveDataA = () => {
+    if (
+      !formula.includes('+') &&
+      !formula.includes('-') &&
+      !formula.includes('x') &&
+      !formula.includes('÷') &&
+      !formula.includes(' ')
+    ) {
+      setDataSaveA(formula);
+    }
+  };
+  const useDataA = () => {
+    setNumber(dataSaveA);
+  };
+  const useDataB = () => {
+    setNumber(dataSaveB);
+  };
+  const useDataC = () => {
+    setNumber(dataSaveC);
+  };
+  const useDataD = () => {
+    setNumber(dataSaveD);
+  };
+  const saveDataB = () => {
+    if (
+      !formula.includes('+') &&
+      !formula.includes('-') &&
+      !formula.includes('x') &&
+      !formula.includes('÷') &&
+      !formula.includes(' ')
+    ) {
+      setDataSaveB(formula);
+    }
+  };
+  const saveDataC = () => {
+    if (
+      !formula.includes('+') &&
+      !formula.includes('-') &&
+      !formula.includes('x') &&
+      !formula.includes('÷') &&
+      !formula.includes(' ')
+    ) {
+      setDataSaveC(formula);
+    }
+  };
+  const saveDataD = () => {
+    if (
+      !formula.includes('+') &&
+      !formula.includes('-') &&
+      !formula.includes('x') &&
+      !formula.includes('÷') &&
+      !formula.includes(' ')
+    ) {
+      setDataSaveD(formula);
+    }
   };
 
   const deleteOperation = () => {
@@ -124,21 +184,19 @@ const useCalculatorButton = () => {
   };
 
   const calculateResult = () => {
-    const result =  calculateSubResult();
-      setFormula(`${result}`);
-      lastOperation.current = undefined;
+    const result = calculateSubResult();
+    setFormula(`${result}`);
+    lastOperation.current = undefined;
     setPrevNumber('0');
   };
 
+  const calculateSubResult = (): number => {
+    const [firstValue, operation, secondValue] = formula.split(' ');
 
-  const calculateSubResult=():number  =>{
+    const num1 = Number(firstValue);
+    const num2 = Number(secondValue);
 
-   const [firstValue,operation,secondValue]= formula.split(" ")
-
-const num1 = Number(firstValue);
-const num2 = Number(secondValue);
-
-if(isNaN(num2)) return num1;
+    if (isNaN(num2)) return num1;
 
     switch (operation) {
       case Operator.add:
@@ -155,16 +213,18 @@ if(isNaN(num2)) return num1;
 
       default:
         throw new Error('Operation not implemented');
-    } 
-  }
-
-
+    }
+  };
 
   return {
     //Properties
     number,
     prevNumber,
     formula,
+    dataSaveA,
+    dataSaveB,
+    dataSaveC,
+    dataSaveD,
 
     //Methods
     buildNumber,
@@ -176,6 +236,14 @@ if(isNaN(num2)) return num1;
     addOperation,
     substractOperation,
     calculateResult,
+    saveDataA,
+    saveDataB,
+    saveDataC,
+    saveDataD,
+    useDataA,
+    useDataB,
+    useDataC,
+    useDataD,
   };
 };
 

@@ -1,4 +1,4 @@
-Proyecto React Native CLI. 
+Proyecto React Native CLI. Lo novedoso es que permiter ir guardando en variables los resultados.  
 Actualmente se encuentra en fase de revision en  play store
 
 <p align="left">

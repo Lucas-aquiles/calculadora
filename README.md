@@ -5,7 +5,7 @@ Actualmente se encuentra en fase de revision en  play store
   <img height="400" src="./1.jpeg" />
 </p>
 <p align="left">
-  <img height="400" src="./2" />
+  <img height="400" src="./2.jpeg" />
 </p>
 
 <p align="left">

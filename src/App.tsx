@@ -5,8 +5,6 @@
  * @format
  */
 import {NavigationContainer} from '@react-navigation/native';
-
-import {StatusBar, Text, View} from 'react-native';
 import {styles} from './config/theme/app-theme';
 import {NavigationScreen} from './routes/NavigationScreen';
 

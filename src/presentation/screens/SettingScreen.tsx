@@ -25,11 +25,12 @@ const SettingScreen = () => {
           label="Back"
         />
       </View>
-      <View style={{marginHorizontal: 'auto', marginVertical: 'auto'}}>
+      <View style={{marginHorizontal: 'auto', marginVertical: 40}}>
         <TouchableOpacity onPress={handlePress}>
           <Text
             style={{
               color: 'white',
+              fontSize: 22,
             }}>
             Politicas de Privacidad
           </Text>

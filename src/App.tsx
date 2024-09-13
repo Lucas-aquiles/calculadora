@@ -4,19 +4,22 @@
  *
  * @format
  */
+import {NavigationContainer} from '@react-navigation/native';
 
 import {StatusBar, Text, View} from 'react-native';
 import CalculatorScreen from './presentation/screens/CalculatorScreen';
-import { styles } from './config/theme/app-theme';
+import {styles} from './config/theme/app-theme';
+import {NavigationScreen} from './routes/NavigationScreen';
 
 function App() {
   return (
-    <View style={styles.background}>
-      <StatusBar barStyle={'light-content'} 
-      backgroundColor={'black'} />
-
-<CalculatorScreen/>
-    </View>
+    <NavigationContainer>
+      {/* <View style={styles.background}>
+        <StatusBar barStyle={'light-content'} backgroundColor={'black'} />
+        <CalculatorScreen />
+      </View> */}
+      <NavigationScreen />
+    </NavigationContainer>
   );
 }
 

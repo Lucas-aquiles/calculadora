@@ -4,17 +4,23 @@
  *
  * @format
  */
-import {NavigationContainer} from '@react-navigation/native';
+import '../gesture-handler';
+
+import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import {styles} from './config/theme/app-theme';
 import {NavigationScreen} from './routes/NavigationScreen';
 
+const MyTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: 'black',
+  },
+};
+
 function App() {
   return (
-    <NavigationContainer>
-      {/* <View style={styles.background}>
-        <StatusBar barStyle={'light-content'} backgroundColor={'black'} />
-        <CalculatorScreen />
-      </View> */}
+    <NavigationContainer theme={MyTheme}>
       <NavigationScreen />
     </NavigationContainer>
   );

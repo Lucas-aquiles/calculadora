@@ -1,10 +1,10 @@
 // In App.js in a new project
 
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createStackNavigator} from '@react-navigation/stack';
 import CalculatorScreen from '../presentation/screens/CalculatorScreen';
 import SettingScreen from '../presentation/screens/SettingScreen';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 export const NavigationScreen = () => {
   return (
@@ -12,6 +12,10 @@ export const NavigationScreen = () => {
       initialRouteName="Home"
       screenOptions={{
         headerShown: false,
+        headerStyle: {
+          elevation: 0,
+          shadowColor: 'transparent',
+        },
       }}>
       <Stack.Screen name="Home" component={CalculatorScreen} />
       <Stack.Screen name="Setting" component={SettingScreen} />

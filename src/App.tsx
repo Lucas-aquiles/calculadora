@@ -7,7 +7,6 @@
 import {NavigationContainer} from '@react-navigation/native';
 
 import {StatusBar, Text, View} from 'react-native';
-import CalculatorScreen from './presentation/screens/CalculatorScreen';
 import {styles} from './config/theme/app-theme';
 import {NavigationScreen} from './routes/NavigationScreen';
 

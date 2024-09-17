@@ -1,10 +1,19 @@
-import {Pressable, Text, View, StatusBar} from 'react-native';
+import {
+  Pressable,
+  Text,
+  View,
+  StatusBar,
+  PixelRatio,
+  Dimensions,
+} from 'react-native';
 import {colors, styles} from '../../config/theme/app-theme';
 import CalculatorBottom from '../components/CalculatorBottom';
 import useCalculatorButton from '../hooks/useCalculatorButton';
 import SaveResult from '../components/SaveResults';
 import {useNavigation} from '@react-navigation/native';
 import PrimaryButton from '../components/PrimaryButton';
+
+const pixelRatio = PixelRatio.get();
 
 const CalculatorScreen = () => {
   const {
@@ -35,6 +44,8 @@ const CalculatorScreen = () => {
     calculateResult,
   } = useCalculatorButton();
   const navigation = useNavigation();
+  const {width, height} = Dimensions.get('window'); // Obtener dimensiones de la pantalla
+  const isSpecialResolution = width === 360;
 
   return (
     <View style={styles.background}>
@@ -57,17 +68,18 @@ const CalculatorScreen = () => {
           style={{
             position: 'absolute',
             width: 'auto',
-            top: 0,
-            right: 0,
-            left: 0,
-            height: 200,
+            top: 0 * pixelRatio,
+            right: 0 * pixelRatio,
+            left: 0 * pixelRatio,
+            height: 0.5 * width,
+            paddingBottom: 0.0 * height,
           }}>
           <Text
             style={{
               color: colors.lightGray,
               marginHorizontal: 'auto',
               marginVertical: 'auto',
-              fontSize: 18,
+              fontSize: 0.05 * width,
             }}>
             Guarda tus resultados
           </Text>
@@ -105,7 +117,12 @@ const CalculatorScreen = () => {
           </View>
         </View>
 
-        <View style={{paddingHorizontal: 30, paddingBottom: 20}}>
+        <View
+          style={{
+            paddingHorizontal: 0.1 * width,
+            height: isSpecialResolution ? 0.16 * height : 'auto',
+            marginTop: 0.4 * width,
+          }}>
           <Text
             adjustsFontSizeToFit
             numberOfLines={1}
